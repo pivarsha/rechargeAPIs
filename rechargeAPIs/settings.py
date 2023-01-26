@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,19 +42,33 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'planapp',
     'rest_framework',
-    'corsheaders',
     'rest_framework.authtoken',
-    
+    'corsheaders',
+      
 ]
 
 REST_FRAMEWORK = {
     
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-       
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-    
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
+
+CORS_ALLOWED_ORIGINS = [
+    'http://www.website.com',
+    'http://localhost:3000',
+    'http://localhost:4200',
+    'https://web.postman.co',
+]
+
+CORS_ALLOWED_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,3 +149,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+

@@ -21,8 +21,7 @@ from planapp.views import RegistrationAPIViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("planapp.urls")),
-    path('auth/refreshtoken/', TokenRefreshView.as_view(), name='token-refresh'),
-    path('auth/login/', TokenObtainPairView.as_view(), name='login'),
-    path('auth/register',RegistrationAPIViews.as_view(),name='register'),
-
+    path('login/',TokenObtainPairView.as_view(),name='login'),
+    path('refreshtoken/',TokenRefreshView.as_view(),name='refreshtoken'),
+    path('register/',RegistrationAPIViews.as_view(),name='register'),
 ]
